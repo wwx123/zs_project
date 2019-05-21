@@ -46,7 +46,7 @@ class Template
 	 */
 	private static function genTplFile($tplName = null) {
 		if (!$tplName) {
-			
+
 			if(C('APP_GROUP')){
 				return self::$TEMPLATE_PATH . C('APP_GROUP') . '/' . str_replace('.', '/', __ACTION_NAME__)
 					. '/' . __ACTION_METHOD__  . ZSPHPConfig::TEMPLATE_PREFIX;
@@ -56,7 +56,11 @@ class Template
 					. '/' . __ACTION_METHOD__  . ZSPHPConfig::TEMPLATE_PREFIX;
 		} else {
 			if (!strpos($tplName, ':')) {
-				return self::$TEMPLATE_PATH . C('APP_GROUP') . '/' .  str_replace('.', '/', $tplName) . ZSPHPConfig::TEMPLATE_PREFIX;
+			    if (C('APP_GROUP')) {
+                    return self::$TEMPLATE_PATH . C('APP_GROUP') . '/' .  str_replace('.', '/', $tplName) . ZSPHPConfig::TEMPLATE_PREFIX;
+                } else {
+                    return LIB_PATH . ZSPHPConfig::TEMPLATE_DIR .  str_replace('.', '/', $tplName) . ZSPHPConfig::TEMPLATE_PREFIX;
+                }
 			}
 			
 			return LIB_PATH . ZSPHPConfig::TEMPLATE_DIR . str_replace(array(':', '.'), '/', $tplName)

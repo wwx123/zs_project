@@ -53,7 +53,7 @@ class QuestionAction extends CPUAction
         $content = $this->getParam('content', '');
         $sort    = $this->getParam('sort', 0);
 
-        if (empty($content) || empty($options)) {
+        if (empty($content)) {
             // 问题不能为空
             $return['code'] = Error :: QUESTION_CONTENT_IS_NULL;
             $return['message'] = Error:: getErrorMessage(Error :: QUESTION_CONTENT_IS_NULL);
@@ -98,6 +98,9 @@ class QuestionAction extends CPUAction
     {
         //获取请求参数
         $content = $this->getParam('content', '');
+        $qid     = $this->getParam('qid', 0);
+        $score   = $this->getParam('score', 0);
+        $is_answer = $this->getParam('is_answer', 0);
         $sort    = $this->getParam('sort', 0);
 
         $model = M('Question');
@@ -106,9 +109,27 @@ class QuestionAction extends CPUAction
         $data = array();
         $data['o_name'] = $content;
         $data['q_id'] = $qid;
-        $data['o_sorce'] = $qid;
-        $data['q_id'] = $qid;
-        $data['q_id'] = $qid;
+        $data['o_score'] = $score;
+        $data['o_is_answer'] = $is_answer;
+        $data['o_sort'] = $sort;
+
+        $oid = $model->option_insert($data);
+
+        if ($oid > 0) {
+            $return['code'] = Error :: SUCCESS;
+            $return['message'] = Error:: getErrorMessage(Error :: SUCCESS);
+            $return['content'] = $oid;
+
+            // 按指定格式返回结果（JSON）
+            wxPrintJson($return);
+        } else {
+            $return['code'] = Error :: OPTION_INSERT_IS_FAIL;
+            $return['message'] = Error:: getErrorMessage(Error :: OPTION_INSERT_IS_FAIL);
+            $return['content'] = '';
+
+            // 按指定格式返回结果（JSON）
+            wxPrintJson($return);
+        }
 
     }
 
@@ -119,7 +140,9 @@ class QuestionAction extends CPUAction
      */
     public function grade()
     {
-        $model = M('Question');
+
+        $this->display('index');
     }
+
 
 }

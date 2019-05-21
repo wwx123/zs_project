@@ -16,7 +16,7 @@
  * to see how it all works.
  *
  * We're expanding the wiki to include more helpful documentation, but for
- * now, your best bet is to view the oauth.php source - it has lots of
+ * now, your best bet is to View the oauth.php source - it has lots of
  * comments.
  *
  * @author Tim Ridgely <tim.ridgely@gmail.com>

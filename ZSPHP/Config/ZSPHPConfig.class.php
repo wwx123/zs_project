@@ -10,13 +10,13 @@
  {
 	const ACTION_NAME = 'a';	//action tag
 	const METHOD_NAME = 'm';	//method tag
-	const TEMPLATE_DIR = '/Tpl/';	//以lib目录为根
+	const TEMPLATE_DIR = '/View/';	//以lib目录为根
 	const TEMPLATE_PREFIX = '.php';	//模版文件后缀名
 	const APP_NAME = APP_NAME;	//应用名称
 
 	protected static $_CONFIGS = array(
 			'PUBLIC_SERVICE' => false,//是否为正式服务，否：cache不会启用redis
-			'DEBUGGING' => false,//debug 模式
+			'DEBUGGING' => TRUE,//debug 模式
 			'ENABLE_RUN_LOG' => TRUE,//是否开启运行日志
 			'ENABLE_SQL_LOG' => TRUE,//是否开启sql日志
 			'ENABLE_SYSTEM_LOG' => TRUE,//是否开启system日志
@@ -24,7 +24,6 @@
 			'RUN_LOG_LEVEL' => LOG_E_ALL,//运行日志级别
 			'LOG_PATH' => './',//日志目录，以“/”结束
 			'PHP_CLI_PATH' => '/usr/local/php/bin/php',//php脚本命令
-			'APP_GROUP' => '',
 
 			'DEFAULT_ACTION' => 'Index',//默认ACTION
 			'DEFAULT_METHOD' => 'index',//默认METHOD
@@ -46,6 +45,7 @@
 		if (!$name) {
 			return self::$_CONFIGS;
 		}
+
 		return @self::$_CONFIGS[$name];
 	}
 	/**

@@ -21,6 +21,7 @@ final class Error
     const QUESTION_IS_NULL = 700;
     const QUESTION_CONTENT_IS_NULL = 701;
     const QUESTION_INSERT_IS_FAIL  = 702;
+    const OPTION_INSERT_IS_FAIL = 732;
 
 	/**
 	 *	成功
@@ -44,6 +45,7 @@ final class Error
         self :: QUESTION_IS_NULL => '暂无问卷问题',
         self :: QUESTION_CONTENT_IS_NULL => '问卷问题不能为空',
         self :: QUESTION_INSERT_IS_FAIL  => '问卷问题插入失败',
+	    self :: OPTION_INSERT_IS_FAIL    => '答案插入失败',
 
 	    self :: ERROR => '网络超时',
 	    self :: SUCCESS => 'SUCCESS',
