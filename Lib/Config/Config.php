@@ -35,16 +35,16 @@ Class Config
 
 			'DB_ZS_TEST' => array(
 				'DB_HOST'=>'127.0.0.1',
-				'DB_NAME'=>'mysql',
+				'DB_NAME'=>'sz',
 				'DB_USER'=>'root',
-				'DB_PWD'=>'',
+				'DB_PWD'=>'root',
 			),
 
 			'DB_OPEN_WX' => array(
 				'DB_HOST'=>'127.0.0.1',
-			    'DB_NAME'=>'mysql',
+			    'DB_NAME'=>'sz',
 			    'DB_USER'=>'root',
-				'DB_PWD'=>'',
+				'DB_PWD'=>'root',
 			),
 		),
 	);
